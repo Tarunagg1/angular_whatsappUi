@@ -1,0 +1,46 @@
+<div id="sidebar">
+  <div class="row1">
+    <div id="sidebarHeader">
+      <div class="avtarContainer">
+        <img src="../../assets/images/noPic.svg" />
+      </div>
+      <div class="actionContainer">
+        <img src="../../assets/images/statusIcon.svg" />
+        <img src="../../assets/images/chatIcon.svg" />
+        <img src="../../assets/images/moreVertIcon.svg" />
+      </div>
+    </div>
+
+    <div id="searchBox">
+      <img width="19" src="../../assets/images/searchIcon.png" />
+      <input type="text" [(ngModel)]="searchValue" placeholder="Search or start the new chat" />
+    </div>
+  </div>
+
+  <div id="sidebarcontent">
+    <div class="conversation" *ngFor="let conv of (searchValue ? filterConversations : conversations)" (click)="conversationClicked.emit(conv)" >
+      <div class="picture">
+        <img src="../../assets/images/noPic.svg" />
+      </div>
+      <div class="content">
+        <div class="conversationHeader">
+          <div class="name">{{ conv.name }}</div>
+          <div class="time">{{ conv.time }}</div>
+        </div>
+        <div class="message">
+          <img
+            *ngIf="!conv.latestMessageRead"
+            src="../../assets/images/doubleTick.svg"
+          />
+          <img
+            *ngIf="conv.latestMessageRead"
+            src="../../assets/images/doubleTickBlue.svg"
+          />
+          {{ conv.latestMessage }}
+        </div>
+      </div>
+    </div>
+
+    <div id="noConversition">All chats are archived</div>
+  </div>
+</div>

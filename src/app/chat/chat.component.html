@@ -1,0 +1,46 @@
+<div id="container" class="container">
+  <!-- header -->
+  <div class="header" id="header">
+    <div id="avtarSection">
+      <div class="avtar">
+        <img src="../../assets//images/noPic.svg" alt="" />
+      </div>
+      <div class="namesection">{{ conversation.name }}</div>
+    </div>
+    <div class="ationButtons">
+      <img src="../../assets/images/attached.svg" />
+      <img src="../../assets/images/moreVertIcon.svg" alt="" srcset="" />
+    </div>
+  </div>
+
+  <!-- body -->
+  <div id="body" class="body">
+    <div
+      class="message"
+      id="message"
+      [ngClass]="{ me: msg.me }"
+      *ngFor="let msg of conversation.messages"
+    >
+      <div class="messageContent">
+        {{ msg.body }}
+        <div class="time">{{ msg.time }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div id="footer" class="footer">
+    <div id="smilyIcon">
+      <img src="../../assets/images/smileIcon.svg" alt="" srcset="" />
+    </div>
+    <div id="textarea">
+      <textarea
+        (keyup.enter)="submitMessage($event)"
+        placeholder="Type something..."
+      ></textarea>
+    </div>
+    <div id="voiceIcon">
+      <img src="../../assets/images/voiceIcon.svg" alt="" srcset="" />
+    </div>
+  </div>
+</div>

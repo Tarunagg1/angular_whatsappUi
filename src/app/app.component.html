@@ -2,17 +2,30 @@
 <div class="background_body"></div>
 
 <div id="chatContainer">
-  <div id="sidebar">
-    <div id="sidebarHeader"></div>
-    <div id="searchBox">
-      <img width="13" src="../assets/images/searchIcon.png" />
-      <input type="text" placeholder="Search or start the new chat" />
+  <app-sidebar
+    (conversationClicked)="onconversationSelected($event)"
+  ></app-sidebar>
+
+  <!-- chats -->
+  <div id="chat">
+    <div id="chatPlaceholder" *ngIf="!conversation">
+      <img
+        width="300"
+        src="../../assets/images/phoneIcon.png"
+        alt=""
+        srcset=""
+      />
+      <h2>Keep Your Phone Connected</h2>
+      <p>
+        WhatsApp connects your phone to sync messages. To reduce data usage,<br />
+        connet to your phone to wifi
+      </p>
+      <div class="seperator"></div>
+      <p>Whatsapp avilabe to for mac <a href="#">Get It here</a></p>
     </div>
-    <div id="sidebarcontent">
-      <div id="noConversition">All chats are archived</div>
-    </div>
+
+    <app-chat [conversation]="conversation" *ngIf="conversation"></app-chat>
   </div>
-  <div id="chat"></div>
 </div>
 
 <router-outlet></router-outlet>

@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'whatsapp-clone';
+
+  conversation = undefined;
+
+  
+  onconversationSelected(conversation){
+    this.conversation = conversation;    
+  }
+
+
 }
